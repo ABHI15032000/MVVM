@@ -17,6 +17,9 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -26,25 +29,20 @@ import com.example.mvvm.ui.theme.MVVMTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+        super.onCreate(savedInstanceState) // RUn genral implementation
         enableEdgeToEdge()
 //        val counterViewModel = CounterViewModel()  --> CounterViewModel() manually created in onCreate(), so it gets recreated every time the Activity restarts
-         val counterViewModel: CounterViewModel by viewModels()  // Android retain your ViewModel across configuration changes.
+        setContent { // Here write your code it will run your implementation
+            val counterViewModel: CounterViewModel by viewModels() // Android retain your ViewModel across configuration changes.
 
-
-
-        setContent {
             MVVMTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    CounterApp(counterViewModel)
-                }
+                CounterApp(counterViewModel)
             }
         }
     }
 }
-@Composable
+@Composable // directs to interpret a fn declaratively which defined that this function defined a segment of UI, facilitating both composition and recomposition (display and redisply
  fun CounterApp(counterViewModel: CounterViewModel){
-
      Column(
          modifier = Modifier.fillMaxSize().padding(16.dp),
          horizontalAlignment = Alignment.CenterHorizontally,
@@ -55,7 +53,6 @@ class MainActivity : ComponentActivity() {
 
          Row {
              Button(onClick = { counterViewModel.decrement() }) {
-                 Text("")
                  Text("Decrease")
              }
              Spacer(modifier = Modifier.width(16.dp))
@@ -66,5 +63,7 @@ class MainActivity : ComponentActivity() {
      }
 
  }
+//Padding - if want a fine grained space around a particular element
+// Spacing - Consistent space between multiple element
 
 
