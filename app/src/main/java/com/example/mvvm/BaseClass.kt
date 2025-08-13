@@ -6,4 +6,8 @@ package com.example.mvvm
     fun coreValues(){
         println("core values of base class")
     }
+
+     open fun role(){
+         println("Member of Base Class")
+     }
 }
