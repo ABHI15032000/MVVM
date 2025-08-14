@@ -29,7 +29,7 @@ import com.example.mvvm.ui.theme.MVVMTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState) // RUn genral implementation
+        super.onCreate(savedInstanceState) // Run general implementation
         enableEdgeToEdge()
 //        val counterViewModel = CounterViewModel()  --> CounterViewModel() manually created in onCreate(), so it gets recreated every time the Activity restarts
         setContent { // Here write your code it will run your implementation
