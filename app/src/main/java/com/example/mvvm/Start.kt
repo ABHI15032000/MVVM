@@ -10,4 +10,11 @@ fun main(){
 
     val obj3 = Tertiary()
     obj3.role()
+
+
+    val kid = Offspring()
+    kid.coreValues()
+    kid.archery()
+    kid.archery()
+    kid.role()
 }
